@@ -16,39 +16,41 @@
       <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
           <li>
-            <svg
-              enable-background="new 0 0 50 50"
-              height="50px"
-              id="Layer_1"
-              version="1.1"
-              viewBox="0 0 50 50"
-              width="50px"
-              xml:space="preserve"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
-              <rect fill="none" height="50" width="50" />
-              <line
-                fill="none"
-                stroke="#000000"
-                stroke-miterlimit="10"
-                stroke-width="4"
-                x1="9"
-                x2="41"
-                y1="25"
-                y2="25"
-              />
-              <line
-                fill="none"
-                stroke="#000000"
-                stroke-miterlimit="10"
-                stroke-width="4"
-                x1="25"
-                x2="25"
-                y1="9"
-                y2="41"
-              />
-            </svg>
+            <label for="my-modal-6">
+              <svg
+                enable-background="new 0 0 50 50"
+                height="50px"
+                id="Layer_1"
+                version="1.1"
+                viewBox="0 0 50 50"
+                width="50px"
+                xml:space="preserve"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <rect fill="none" height="50" width="50" />
+                <line
+                  fill="none"
+                  stroke="#000000"
+                  stroke-miterlimit="10"
+                  stroke-width="4"
+                  x1="9"
+                  x2="41"
+                  y1="25"
+                  y2="25"
+                />
+                <line
+                  fill="none"
+                  stroke="#000000"
+                  stroke-miterlimit="10"
+                  stroke-width="4"
+                  x1="25"
+                  x2="25"
+                  y1="9"
+                  y2="41"
+                />
+              </svg>
+            </label>
           </li>
           <li>
             <a>
@@ -78,19 +80,47 @@
 
     <div class="border-2 border-black m-12 rounded-2xl">
       <main class="h-screen">
-        <div>
-          <form action="/newRecipe" method="POST" class="input-container">
-            <input type="text" name="title" />
-            <input type="text" name="category" />
-            <input type="text" name="tags" />
-            <input type="text" name="desc" />
-            <!-- <input type="text" name="author" /> -->
-            <input type="submit" value="Submit" />
-          </form>
+        <!-- MODAL -->
+        <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+        <div class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <label
+              for="my-modal-6"
+              class="btn btn-sm btn-circle absolute right-2 top-2"
+              >✕</label
+            >
+            <div>
+              <h1 class="text-2xl m-4">Upload a new recipe!</h1>
+              <form action="/newRecipe" method="POST" class="input-container">
+                <input
+                  class="m-2"
+                  type="text"
+                  name="title"
+                  placeholder="Title"
+                />
+                <input
+                  class="m-2"
+                  type="text"
+                  name="category"
+                  placeholder="Category"
+                />
+                <input class="m-2" type="text" name="tags" placeholder="Tags" />
+                <input
+                  class="m-2"
+                  type="text"
+                  name="desc"
+                  placeholder="Description"
+                />
+                <!-- <input type="text" name="author" /> -->
+                <input class="p-4" type="submit" value="Submit" />
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="card-container p-12">
+        <div class="card-container p-12 flex">
+          <% for(let i=0; i < recipies.length; i++) {%>
           <div
-            class="card w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform"
+            class="card m-4 w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform"
           >
             <a href="/#">
               <figure>
@@ -98,17 +128,17 @@
               </figure>
               <div class="card-body">
                 <h2 class="card-title">
-                  Shoes!
+                  <%= recipies[i].title %>
                   <div class="badge badge-secondary">NEW</div>
                 </h2>
                 <p>Duration: <span class="font-bold">20min</span></p>
                 <div class="card-actions justify-end">
-                  <div class="badge badge-outline">Fashion</div>
-                  <div class="badge badge-outline">Products</div>
+                  <div class="badge badge-outline"><%= recipies[i].tags %></div>
                 </div>
               </div>
             </a>
           </div>
+          <% } %>
         </div>
       </main>
     </div>
