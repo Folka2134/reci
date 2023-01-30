@@ -98,45 +98,61 @@
                   name="title"
                   placeholder="Title"
                 />
-                <input
+                <!-- <input
                   class="m-2"
                   type="text"
                   name="category"
                   placeholder="Category"
-                />
+                /> -->
+                <label for="category">Category:</label>
+                <!-- <input list="category" placeholder="Category" /> -->
+                <select id="category" name="category" class="m-2">
+                  <option value="Breakfast">BreakFast</option>
+                  <option value="Lunch">Lunch</option>
+                  <option value="Dinner">Dinner</option>
+                </select>
+
                 <input class="m-2" type="text" name="tags" placeholder="Tags" />
+                <!-- ADD TAG OPTIONS -->
+
                 <input
                   class="m-2"
                   type="text"
                   name="desc"
                   placeholder="Description"
                 />
-                <!-- <input type="text" name="author" /> -->
                 <input class="p-4" type="submit" value="Submit" />
               </form>
             </div>
           </div>
         </div>
+        <!-- RECIPIES -->
         <div class="card-container p-12 flex">
           <% for(let i=0; i < recipies.length; i++) {%>
-          <div
-            class="card m-4 w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform"
-          >
+          <div class="card m-4 w-96 bg-base-100 shadow-xl">
             <a href="/#">
               <figure>
                 <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
               </figure>
-              <div class="card-body">
-                <h2 class="card-title">
-                  <%= recipies[i].title %>
-                  <div class="badge badge-secondary">NEW</div>
-                </h2>
-                <p>Duration: <span class="font-bold">20min</span></p>
-                <div class="card-actions justify-end">
-                  <div class="badge badge-outline"><%= recipies[i].tags %></div>
-                </div>
-              </div>
             </a>
+            <div class="card-body">
+              <h2 class="card-title">
+                <%= recipies[i].title %>
+                <div class="badge badge-secondary">NEW</div>
+              </h2>
+              <p>Duration: <span class="font-bold">20min</span></p>
+              <div class="card-actions justify-end">
+                <ul class="flex">
+                  <% for(let j=0; j < recipies[i].tags.length; j++) {%>
+
+                  <button class="bg-purple-400 hover:bg-pink-400">
+                    <%= recipies[i].tags[j] %>
+                  </button>
+
+                  <% } %>
+                </ul>
+              </div>
+            </div>
           </div>
           <% } %>
         </div>

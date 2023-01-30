@@ -10,7 +10,7 @@ const recipeSchema = new mongoose.Schema({
   },
   tags: {
     required: true,
-    type: String,
+    type: [String],
   },
   desc: {
     required: true,
