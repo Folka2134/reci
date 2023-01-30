@@ -98,14 +98,7 @@
                   name="title"
                   placeholder="Title"
                 />
-                <!-- <input
-                  class="m-2"
-                  type="text"
-                  name="category"
-                  placeholder="Category"
-                /> -->
                 <label for="category">Category:</label>
-                <!-- <input list="category" placeholder="Category" /> -->
                 <select id="category" name="category" class="m-2">
                   <option value="Breakfast">BreakFast</option>
                   <option value="Lunch">Lunch</option>
@@ -121,6 +114,26 @@
                   name="desc"
                   placeholder="Description"
                 />
+                <div>
+                  <h1 class="text-lg font-bold">Indredients:</h1>
+                  <!-- DUMMY SECTION -->
+                  <ul class="ml-2">
+                    <div>
+                      <input type="text" placeholder="Ingredient" />
+                      <input
+                        type="Number"
+                        id="quantity"
+                        name="quantity"
+                        placeholder="Quantity"
+                        min="1"
+                        max="8"
+                      />
+                    </div>
+                    <li>Chicken breast<span class="ml-2">x2</span></li>
+                    <li>Mushrooms<span class="ml-2">x4</span></li>
+                    <li>Pasta<span class="ml-2">x1</span></li>
+                  </ul>
+                </div>
                 <input class="p-4" type="submit" value="Submit" />
               </form>
             </div>
@@ -129,7 +142,9 @@
         <!-- RECIPIES -->
         <div class="card-container p-12 flex">
           <% for(let i=0; i < recipies.length; i++) {%>
-          <div class="card m-4 w-96 bg-base-100 shadow-xl">
+          <div
+            class="card m-4 w-96 bg-base-100 shadow-xl hover:scale-105 transition-transform"
+          >
             <a href="/#">
               <figure>
                 <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
@@ -145,7 +160,7 @@
                 <ul class="flex">
                   <% for(let j=0; j < recipies[i].tags.length; j++) {%>
 
-                  <button class="bg-purple-400 hover:bg-pink-400">
+                  <button class="badge badge-outline hover:bg-pink-400">
                     <%= recipies[i].tags[j] %>
                   </button>
 

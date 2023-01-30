@@ -6,7 +6,7 @@ const homeRoutes = require("./routes/homeRoutes");
 
 // Express setup
 const app = express();
-const PORT = 5001;
+const PORT = 5000;
 
 // MONGODB Setup
 dotenv.config({ path: "./config/.env" });
